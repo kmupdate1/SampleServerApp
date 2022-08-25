@@ -28,17 +28,17 @@ fun Application.configureTemplating() {
         mustacheFactory = DefaultMustacheFactory("templates/mustache")
     }
 
-    routing{
+    routing {
         get("/") {
             val model = mapOf(
-                "page_title"     to PAGE_TITLE,
-                "title"          to TITLE,
-                "message_label"  to MESSAGE_LABEL,
+                "page_title" to PAGE_TITLE,
+                "title" to TITLE,
+                "message_label" to MESSAGE_LABEL,
                 "login_id_label" to LOGIN_LABEL,
-                "login_id"       to "",
+                "login_id" to "",
                 "password_label" to PASSWORD_LABEL,
-                "password"       to "",
-                "submit_login"   to SUBMIT_LOGIN_BUTTON,
+                "password" to "",
+                "submit_login" to SUBMIT_LOGIN_BUTTON,
                 "submit_sign_in" to SUBMIT_SIGN_ING_BUTTON,
                 "flag_message_label" to false
             )
@@ -48,20 +48,24 @@ fun Application.configureTemplating() {
         post("/") {
             val params: Parameters = call.receiveParameters()
             val model = mapOf(
-                "page_title"     to PAGE_TITLE,
-                "title"          to TITLE,
-                "message_label"  to MESSAGE_LABEL,
-                "result_login"   to RESULT_LOGIN_LABEL,
+                "page_title" to PAGE_TITLE,
+                "title" to TITLE,
+                "message_label" to MESSAGE_LABEL,
+                "result_login" to RESULT_LOGIN_LABEL,
                 "login_id_label" to LOGIN_LABEL,
-                "login_id"       to "${params["login_id"]}",
+                "login_id" to "${params["login_id"]}",
                 "password_label" to PASSWORD_LABEL,
-                "password"       to "",
-                "submit_login"   to SUBMIT_LOGIN_BUTTON,
+                "password" to "",
+                "submit_login" to SUBMIT_LOGIN_BUTTON,
                 "submit_sign_in" to SUBMIT_SIGN_ING_BUTTON,
-                "result_login"   to RESULT_LOGIN_LABEL,
+                "result_login" to RESULT_LOGIN_LABEL,
                 "flag_message_label" to false
-                )
+            )
             call.respond(MustacheContent(TEMPLATE_FILE_NAME, model))
+        }
+
+        get("/sample") {
+
         }
     }
 }
