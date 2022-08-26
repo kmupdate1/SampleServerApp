@@ -20,7 +20,7 @@ class PostgresSQL: MetaDatabase {
         }
     }
 
-    override fun insertData(tableName: String, data: Any) {
+    override fun insertData(tableName: String, schemeName: String, data: Any) {
         transaction {
 
         }

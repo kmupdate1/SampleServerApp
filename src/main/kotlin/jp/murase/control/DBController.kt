@@ -17,8 +17,8 @@ class DBController(
         return this
     }
 
-    override fun insertData(tableName: String, data: Any): DBController {
-
+    override fun insertData(tableName: String, schemeName: String, data: Any): DBController {
+        database.insertData(tableName,, data)
         return this
     }
 

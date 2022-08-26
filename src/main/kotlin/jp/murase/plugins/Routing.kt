@@ -11,12 +11,12 @@ fun Application.configureRouting() {
     
 
     routing {
-        get("/sign-in") {
-            call.respondText("This is sign in page.")
+        get("/example") {
+            call.respondText("This is example page.")
         }
         // Static plugin. Try to access `/static/index.html`
         static("/static") {
-            resources("static")
+            resources("static/contents/")
         }
     }
 }

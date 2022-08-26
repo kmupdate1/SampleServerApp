@@ -13,6 +13,6 @@ fun databaseManagement() {
     DBController(SQLite())
         .establish(URL, DRIVER)
         .createSchema(USER_TABLE, UserTable)
-        .insertData(USER_TABLE, "lax.potcx1562@gmail.com")
-        .insertData(USER_TABLE, "smiley")
+        .insertData(USER_TABLE, , "lax.potcx1562@gmail.com")
+        .insertData(USER_TABLE, , "smiley")
 }

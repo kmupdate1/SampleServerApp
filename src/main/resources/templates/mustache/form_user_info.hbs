@@ -16,18 +16,21 @@
                 <br>
                 <form method="post" action="/">
                     <div class="form-group">
-                        <div align="left">
-                            <label for="login_id">{{login_id_label}}</label>
+                        <div>
+                            <label for="login_id">{{login_id_label}}
+                                <input type="text" class="form-control" id="login_id" name="login_id" size="50" value="{{login_id}}">
+                            </label>
                         </div>
-                        <input type="text" class="form-control" id="login_id" name="login_id" size="50" value="{{login_id}}">
                     </div>
+                    <br><br>
                     <div class="form-group">
-                        <div align="left">
-                            <label for="pass">{{password_label}}<br></label>
+                        <div>
+                            <label for="pass">{{password_label}}
+                                <input type="password" class="form-control" id="password" name="password" size="50" value="{{password}}">
+                            </label>
                         </div>
-                        <input type="password" class="form-control" id="password" name="password" size="50" value="{{password}}">
                     </div>
-                    <br>
+                    <br><br><br><br>
                     <button type="submit" class="btn btn-primary">{{submit_login}}</button>
                     <br>
                     <p style="color:red">{{&result_login}}</p>
