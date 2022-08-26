@@ -5,6 +5,8 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.lang.Exception
+import kotlin.system.exitProcess
 
 const val SQLITE = "SQLite"
 
@@ -24,12 +26,16 @@ class SQLite: MetaDatabase {
 
     override fun insertData(tableName: String, schemeName: String, data: Any) {
         val table = tableMapList[tableName]
-        if (table != null) {
+        try {
             transaction {
                 table.insert {
-                    table[] = data
+                    table[schemeName] = data
                 }
             }
+        } catch (_: NullPointerException) {
+            throw NullPointerException("テーブルが存在しません")
+        } catch (_: Exception) {
+            exitProcess(0)
         }
     }
 
