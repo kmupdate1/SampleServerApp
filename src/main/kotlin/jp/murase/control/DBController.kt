@@ -1,6 +1,7 @@
 package jp.murase.control
 
 import jp.murase.model.MetaDatabase
+import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Table
 
 class DBController(
@@ -17,8 +18,13 @@ class DBController(
         return this
     }
 
-    override fun insertData(tableName: String, schemeName: String, data: Any): DBController {
-        database.insertData(tableName, schemeName, data)
+    override fun insertData(tableName: String, column: Column<Int>, data: Int): DBController {
+        database.insertData(tableName, column, data)
+        return this
+    }
+
+    override fun insertData(tableName: String, column: Column<String>, data: String): DBController {
+        database.insertData(tableName, column, data)
         return this
     }
 

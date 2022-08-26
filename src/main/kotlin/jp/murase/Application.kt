@@ -17,14 +17,6 @@ fun Application.module() {
     configureTemplating()
     configureRouting()
 
-    //databaseManagement()
 
-/*    Database.connect(URL, DRIVER)
-    transaction {
-        UserTable.insert {
-            it[loginId]  = "m_s620@icloud.com"
-            it[password] = "naka23"
-        }
-    }
-*/
+    databaseManagement()
 }

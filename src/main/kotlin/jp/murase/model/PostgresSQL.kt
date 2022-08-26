@@ -1,5 +1,6 @@
 package jp.murase.model
 
+import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -20,7 +21,13 @@ class PostgresSQL: MetaDatabase {
         }
     }
 
-    override fun insertData(tableName: String, schemeName: String, data: Any) {
+    override fun insertData(tableName: String, column: Column<Int>, data: Int) {
+        transaction {
+
+        }
+    }
+
+    override fun insertData(tableName: String, column: Column<String>, data: String) {
         transaction {
 
         }

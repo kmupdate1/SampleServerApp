@@ -1,12 +1,7 @@
 package jp.murase.model
 
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
-import java.lang.Exception
-import kotlin.system.exitProcess
 
 const val SQLITE = "SQLite"
 
@@ -24,18 +19,26 @@ class SQLite: MetaDatabase {
         }
     }
 
-    override fun insertData(tableName: String, schemeName: String, data: Any) {
-        val table = tableMapList[tableName]
-        try {
+    override fun insertData(tableName: String, column: Column<Int>, data: Int) {
+        val table: Table? = tableMapList[tableName]
+        if (table != null) {
             transaction {
                 table.insert {
-                    table[schemeName] = data
+                    it[column] = data
                 }
             }
-        } catch (_: NullPointerException) {
-            throw NullPointerException("テーブルが存在しません")
-        } catch (_: Exception) {
-            exitProcess(0)
+        }
+    }
+
+    override fun insertData(tableName: String, column: Column<String>, data: String) {
+        val table: Table? = tableMapList[tableName]
+        if (table != null) {
+            println("table : $table, column : $column, data : $data")
+            transaction {
+                table.insert {
+                    it[column] = data
+                }
+            }
         }
     }
 
